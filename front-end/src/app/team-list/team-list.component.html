@@ -1,0 +1,16 @@
+<p class="title is-2">Team List</p>
+
+<div *ngFor="let team of teams">
+    <div class="box">
+        <a [title]="team.owner + '\'s' +' team'" [routerLink]="['/team', team.id]">
+        <div class="columns">
+        <div class="column is-2">
+            <!-- <img src="{{team.logo}}" alt="{{team.owner}}" class="image is-128x128"> -->
+        </div>
+        <div class="column">
+            <p class="title is-4">{{team.owner}}</p>
+            <p *ngFor="let pokemon of team.pokemons" class="subtitle is-6">{{ pokemon }}</p>
+        </div>
+        </div>
+        </a>
+    </div>
