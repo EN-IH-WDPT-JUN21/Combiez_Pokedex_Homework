@@ -1,3 +1,4 @@
+import { placehorder_trainers } from './../models/trainer';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./trainer-list.component.css']
 })
 export class TrainerListComponent implements OnInit {
+
+  trainers = placehorder_trainers; // until we have a working service.
 
   constructor() { }
 

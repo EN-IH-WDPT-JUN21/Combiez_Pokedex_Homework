@@ -1,1 +1,15 @@
-<p>trainer-list works!</p>
+<p class="title is-2">Trainer List</p>
+
+<div *ngFor="let trainer of trainers">
+    <div class="box">
+        <a [title]="trainer.name" [routerLink]="['/trainer', trainer.id]">
+            <p class="title">{{trainer.name}}</p>
+            <!-- <div class="columns">
+                <div class="column is-2"> -->
+            <img src="{{trainer.photo}}" alt="{{trainer.name}}" class="image is-128x128">
+                <!-- </div>
+            </div> -->
+        </a>
+    </div>
+
+<hr>
