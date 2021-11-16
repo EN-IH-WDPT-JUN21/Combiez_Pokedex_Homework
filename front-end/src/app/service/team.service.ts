@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class TeamService {
 
-  baseUrl = 'http://localhost:8080/teams';
+  baseUrl = 'http://localhost:8080/teams/';
   
   constructor(
     private http: HttpClient
@@ -16,6 +16,11 @@ export class TeamService {
 
   getTeams(): Observable<Team[]> {
     return this.http.get<Team[]>(this.baseUrl);
+  }
+
+  getTeam(id: number): Observable<Team> {
+    console.log(`getTeam a ${this.baseUrl}${id}`)
+    return this.http.get<Team>(this.baseUrl + id);
   }
 }
 

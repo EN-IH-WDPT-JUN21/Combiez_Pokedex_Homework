@@ -1,7 +1,7 @@
 package com.Ironhack.pokemonbackend.service;
 
 import com.Ironhack.pokemonbackend.controller.dto.TeamDTO;
-import com.Ironhack.pokemonbackend.controller.dto.TeamListDTO;
+import com.Ironhack.pokemonbackend.controller.dto.TeamWithNameDTO;
 import com.Ironhack.pokemonbackend.dao.Team;
 import com.Ironhack.pokemonbackend.dao.Trainer;
 import com.Ironhack.pokemonbackend.repository.TeamRepository;
@@ -25,13 +25,17 @@ public class TeamService {
     private TrainerRepository trainerRepository;
 
 
-    public Team getTeamByTrainer(Long id) {
+    public TeamWithNameDTO getTeamByTrainer(Long id) {
         Optional<Trainer> trainer = trainerRepository.findById(id);
 
         if(trainer.isPresent()){
             Optional<Team> team = teamRepository.findByTrainer(id);
             if(team.isPresent()){
-                return team.get();
+                return new TeamWithNameDTO(
+                        team.get().getId(),
+                        trainerRepository.getById(team.get().getId()).getName(),
+                        team.get().getPokemon()
+                );
             }else{
                 return null;
             }
@@ -62,12 +66,12 @@ public class TeamService {
     }
 
     // Needs error-handling
-    public List<TeamListDTO> getAllTeams() {
+    public List<TeamWithNameDTO> getAllTeams() {
         List<Team> teamList = teamRepository.findAll();
-        List<TeamListDTO> teamListWithNames = new ArrayList<>();
+        List<TeamWithNameDTO> teamListWithNames = new ArrayList<>();
         for (Team team: teamList) {
          teamListWithNames.add(
-                 new TeamListDTO(
+                 new TeamWithNameDTO(
                          team.getId(),
                          trainerRepository.getById(team.getId()).getName(),
                          team.getPokemon()));

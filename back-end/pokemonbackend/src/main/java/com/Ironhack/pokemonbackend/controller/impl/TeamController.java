@@ -1,7 +1,7 @@
 package com.Ironhack.pokemonbackend.controller.impl;
 
 import com.Ironhack.pokemonbackend.controller.dto.TeamDTO;
-import com.Ironhack.pokemonbackend.controller.dto.TeamListDTO;
+import com.Ironhack.pokemonbackend.controller.dto.TeamWithNameDTO;
 import com.Ironhack.pokemonbackend.dao.Team;
 import com.Ironhack.pokemonbackend.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +18,12 @@ public class TeamController {
     private TeamService teamService;
 
     @GetMapping("/{id}")
-    public Team getTeam(@PathVariable(name="id") Long id){
+    public TeamWithNameDTO getTeam(@PathVariable(name="id") Long id){
         return teamService.getTeamByTrainer(id);
     }
 
     @GetMapping
-    public List<TeamListDTO> getAllTeams() {
+    public List<TeamWithNameDTO> getAllTeams() {
         return teamService.getAllTeams();
     }
 
