@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/trainers")
+@CrossOrigin(exposedHeaders="Access-Control-Allow-Origin")
 public class TrainerController {
 
     @Autowired

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Combiez_Pokedex_Homework.iml" filepath="$PROJECT_DIR$/.idea/Combiez_Pokedex_Homework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/back-end/pokemonbackend/pokemonbackend.iml" filepath="$PROJECT_DIR$/back-end/pokemonbackend/pokemonbackend.iml" />
     </modules>
   </component>
 </project>
