@@ -27,10 +27,12 @@ public class TeamController {
         return teamService.getAllTeams();
     }
 
-    @PostMapping
-    public Team createTeam(@RequestBody TeamDTO teamDTO){
-        return teamService.newTeam(teamDTO);
-    }
+//    Not needed as creating a trainer creates a team
+    //@PostMapping
+   // public Team createTeam(@RequestBody TeamDTO teamDTO){
+   //     return teamService.newTeam(teamDTO);
+    //}
+
 
     @PutMapping
     public Team amendTeam(@RequestBody TeamDTO teamDTO){
