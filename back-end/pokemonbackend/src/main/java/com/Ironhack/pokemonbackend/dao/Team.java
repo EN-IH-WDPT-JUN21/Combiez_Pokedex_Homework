@@ -27,4 +27,8 @@ public class Team {
         this.trainer = trainer;
         this.pokemon = pokemon;
     }
+
+    public Team(Long trainer) {
+        this.trainer = trainer;
+    }
 }
