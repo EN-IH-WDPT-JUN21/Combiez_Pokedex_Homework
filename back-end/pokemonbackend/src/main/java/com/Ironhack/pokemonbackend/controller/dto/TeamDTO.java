@@ -14,7 +14,7 @@ public class TeamDTO {
 
     private Long trainer;
 
-    private Integer[] pokemon;
+    private String[] pokemon;
 
     public TeamDTO(Long trainer) {
         this.trainer = trainer;

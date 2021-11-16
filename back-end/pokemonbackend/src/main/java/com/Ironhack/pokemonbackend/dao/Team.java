@@ -20,10 +20,10 @@ public class Team {
 
     private Long trainer;
 
-    private Integer[] pokemon;
+    private String[] pokemon;
 
 
-    public Team(Long trainer, Integer[] pokemon) {
+    public Team(Long trainer, String[] pokemon) {
         this.trainer = trainer;
         this.pokemon = pokemon;
     }
