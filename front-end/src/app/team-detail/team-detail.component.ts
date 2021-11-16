@@ -17,10 +17,14 @@ export class TeamDetailComponent implements OnInit {
               private teamService: TeamService) { }
 
   ngOnInit(): void {
-    const routeParams = this.route.snapshot.paramMap;
-    const teamId = Number(routeParams.get('id'));
+    this.getTeam();
+  }
 
-    this.team = teams.find(team => team.id === teamId);
+  getTeam(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    console.log(id);
+    this.teamService.getTeam(id)
+      .subscribe(team => this.team = team);
   }
 
 }

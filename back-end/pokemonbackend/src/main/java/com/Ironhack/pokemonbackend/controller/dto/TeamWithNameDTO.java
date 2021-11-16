@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TeamListDTO {
+public class TeamWithNameDTO {
 
     private Long id;
     private String owner;
