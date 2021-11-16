@@ -1,6 +1,8 @@
 <p class="title is-2">Trainer List</p>
 
-<div *ngFor="let trainer of trainers">
+<app-trainer-create></app-trainer-create>
+
+<div *ngFor="let trainer of trainers | async">
     <div class="box">
         <a [title]="trainer.name" [routerLink]="['/trainer', trainer.id]">
             <p class="title">{{trainer.name}}</p>

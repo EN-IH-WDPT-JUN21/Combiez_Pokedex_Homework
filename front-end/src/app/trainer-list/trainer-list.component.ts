@@ -1,5 +1,7 @@
-import { placehorder_trainers } from './../models/trainer';
+import { TrainerService } from './../service/trainer.service';
+import { Trainer } from './../models/trainer';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-trainer-list',
@@ -7,12 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./trainer-list.component.css']
 })
 export class TrainerListComponent implements OnInit {
+  trainers: Observable<Trainer[]> | undefined;
 
-  trainers = placehorder_trainers; // until we have a working service.
-
-  constructor() { }
+  constructor(
+   private trainerService: TrainerService    
+  ) { }
 
   ngOnInit(): void {
+    this.reloadData();
   }
 
+  reloadData() {
+    this.trainers = this.trainerService.getTrainersList();
+  }
 }
