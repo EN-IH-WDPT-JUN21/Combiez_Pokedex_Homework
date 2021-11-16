@@ -9,13 +9,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TeamDTO {
+public class TeamListDTO {
 
-    private Long trainer;
+    private Long id;
+    private String owner;
+    private String[] pokemons;
 
-    private String[] pokemon;
-
-    public TeamDTO(Long trainer) {
-        this.trainer = trainer;
-    }
 }

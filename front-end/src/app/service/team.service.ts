@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Team } from '../models/team';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeamService {
 
-  teamList: Team[] = [];
+  baseUrl = 'http://localhost:8080/teams';
+  
+  constructor(
+    private http: HttpClient
+  ) { }
 
-  constructor() { }
-
-  getTeams() {
-    return this.teamList;
+  getTeams(): Observable<Team[]> {
+    return this.http.get<Team[]>(this.baseUrl);
   }
 }
 

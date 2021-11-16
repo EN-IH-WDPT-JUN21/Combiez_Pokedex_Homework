@@ -1,10 +1,13 @@
 package com.Ironhack.pokemonbackend.controller.impl;
 
 import com.Ironhack.pokemonbackend.controller.dto.TeamDTO;
+import com.Ironhack.pokemonbackend.controller.dto.TeamListDTO;
 import com.Ironhack.pokemonbackend.dao.Team;
 import com.Ironhack.pokemonbackend.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/teams")
@@ -17,6 +20,11 @@ public class TeamController {
     @GetMapping("/{id}")
     public Team getTeam(@PathVariable(name="id") Long id){
         return teamService.getTeamByTrainer(id);
+    }
+
+    @GetMapping
+    public List<TeamListDTO> getAllTeams() {
+        return teamService.getAllTeams();
     }
 
     @PostMapping

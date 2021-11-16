@@ -1,6 +1,7 @@
 package com.Ironhack.pokemonbackend.service;
 
 import com.Ironhack.pokemonbackend.controller.dto.TeamDTO;
+import com.Ironhack.pokemonbackend.controller.dto.TeamListDTO;
 import com.Ironhack.pokemonbackend.dao.Team;
 import com.Ironhack.pokemonbackend.dao.Trainer;
 import com.Ironhack.pokemonbackend.repository.TeamRepository;
@@ -10,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -56,5 +59,19 @@ public class TeamService {
         }else{
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No team matching that Id");
         }
+    }
+
+    // Needs error-handling
+    public List<TeamListDTO> getAllTeams() {
+        List<Team> teamList = teamRepository.findAll();
+        List<TeamListDTO> teamListWithNames = new ArrayList<>();
+        for (Team team: teamList) {
+         teamListWithNames.add(
+                 new TeamListDTO(
+                         team.getId(),
+                         trainerRepository.getById(team.getId()).getName(),
+                         team.getPokemon()));
+        }
+        return teamListWithNames;
     }
 }
