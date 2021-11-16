@@ -40,7 +40,10 @@ public class TrainerService {
 
     public Trainer createTrainer(TrainerDTO trainerDTO) {
         Trainer newTrainer =  new Trainer(trainerDTO.getName(), trainerDTO.getAge(), trainerDTO.getHobby(), trainerDTO.getPhoto());
-        return trainerRepository.save(newTrainer);
+        trainerRepository.save(newTrainer);
+        Team newTeam = new Team(newTrainer.getId());
+        teamRepository.save(newTeam);
+        return newTrainer;
     }
 
 
