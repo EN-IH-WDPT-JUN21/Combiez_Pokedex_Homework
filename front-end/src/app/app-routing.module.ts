@@ -8,6 +8,7 @@ import { TrainerListComponent } from './trainer-list/trainer-list.component';
 
 const routes: Routes = [
   {path: '', component: PokemonListComponent},
+  {path: 'pokemon', component: PokemonListComponent},
   {path: 'team', component: TeamListComponent},
   {path: 'team/:id', component: TeamDetailComponent},
   {path: 'trainer', component: TrainerListComponent},

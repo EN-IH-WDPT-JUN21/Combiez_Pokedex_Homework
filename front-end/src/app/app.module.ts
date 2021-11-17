@@ -11,6 +11,7 @@ import { TeamListComponent } from './team-list/team-list.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { TrainerListComponent } from './trainer-list/trainer-list.component';
 import { TrainerCreateComponent } from './trainer-create/trainer-create.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { TrainerCreateComponent } from './trainer-create/trainer-create.componen
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
