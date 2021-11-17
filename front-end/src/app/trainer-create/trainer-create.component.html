@@ -1,19 +1,21 @@
   <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" required [(ngModel)]="trainer.name" name="name">
+    <div class="columns">
+      <div class="form-group">
+        <label for="name" class="column is-narrow">Name</label>
+        <input type="text" class="form-control column is-narrow" id="name" required [(ngModel)]="trainer.name" name="name">
+      </div>
+      <div class="form-group">
+          <label for="hobby" class="column is-narrow">Hobby</label>
+          <input type="text" class="form-control column is-narrow" id="hobby" required [(ngModel)]="trainer.hobby" name="hobby">
+      </div>
+      <div class="form-group">
+          <label for="age" class="column is-narrow">Age</label>
+          <input type="number" min="0" class="form-control column is-narrow" id="age" required [(ngModel)]="trainer.age" name="age">
+      </div>
+      <div class="form-group">
+          <label for="photo" class="column is-narrow">Photo URL</label>
+          <input type="text" class="form-control column is-narrow" id="photo" required [(ngModel)]="trainer.photo" name="photo">
+      </div>
     </div>
-    <div class="form-group">
-        <label for="hobby">Hobby</label>
-        <input type="text" class="form-control" id="hobby" required [(ngModel)]="trainer.hobby" name="hobby">
-    </div>
-    <div class="form-group">
-        <label for="age">Age</label>
-        <input type="number" min="0" class="form-control" id="age" required [(ngModel)]="trainer.age" name="age">
-    </div>
-    <div class="form-group">
-        <label for="photo">Photo</label>
-        <input type="text" class="form-control" id="photo" required [(ngModel)]="trainer.photo" name="photo">
-    </div>
-    <button type="submit" class="btn btn-success">Create Trainer</button>
+    <button type="submit" class="button is-danger">Create Trainer</button>
   </form>

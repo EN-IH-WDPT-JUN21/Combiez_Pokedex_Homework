@@ -2,16 +2,29 @@
 
 <app-trainer-create (created)="reloadData()"></app-trainer-create>
 
-<div *ngFor="let trainer of trainers | async">
-    <div class="box">
-        <a [title]="trainer.name" [routerLink]="['/trainer', trainer.id]">
-            <p class="title">{{trainer.name}}</p>
-            <!-- <div class="columns">
-                <div class="column is-2"> -->
-            <img src="{{trainer.photo}}" alt="{{trainer.name}}" class="image is-128x128">
-                <!-- </div>
-            </div> -->
-        </a>
-    </div>
-
-<hr>
+<div class="container">
+<div class="row">
+    <div *ngFor="let trainer of trainers | async">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">
+                    {{trainer.name}}
+                </p>
+            </header>
+            <div class="card-image">
+                <img src="{{trainer.photo}}" alt="Photo of {{trainer.name}}">
+            </div>
+            <div class="card-content">
+            <div class="content">
+                <ul>
+                    <li><b>Hobby</b>: {{trainer.hobby}}</li>
+                    <li><b>Age</b>: {{trainer.age}}</li>
+                </ul>
+            </div>
+            </div>
+            <footer class="card-footer">
+                <!-- <a href="#" class="card-footer-item">Teams</a> -->
+            </footer>
+        </div>
+</div>
+</div>
