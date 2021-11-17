@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { TrainerService } from '../service/trainer.service';
 import { Trainer } from '../models/trainer';
 
@@ -10,6 +10,8 @@ import { Trainer } from '../models/trainer';
 export class TrainerCreateComponent implements OnInit {
 
   trainer : Trainer = this.newTrainer();
+
+  @Output() created: EventEmitter<number> = new EventEmitter();
 
   constructor(private trainerService: TrainerService) {}
 
@@ -31,7 +33,8 @@ export class TrainerCreateComponent implements OnInit {
     .createTrainer(this.trainer)
     .subscribe(
       data => {
-        console.log(data)
+        console.log(data);
+        this.created.emit(this.trainer.id);
         this.trainer = this.newTrainer();
       }, 
       error => console.log(error),

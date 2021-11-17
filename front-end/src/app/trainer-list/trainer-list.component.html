@@ -1,6 +1,6 @@
 <p class="title is-2">Trainer List</p>
 
-<app-trainer-create></app-trainer-create>
+<app-trainer-create (created)="reloadData()"></app-trainer-create>
 
 <div *ngFor="let trainer of trainers | async">
     <div class="box">
