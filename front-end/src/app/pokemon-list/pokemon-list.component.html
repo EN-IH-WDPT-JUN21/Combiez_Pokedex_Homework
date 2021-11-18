@@ -12,7 +12,7 @@
     <ul class="container" *ngFor="let pokemon of pokemonList | paginate:{itemsPerPage: 20, currentPage: page}">
         <li >
             <a href=""></a><img class="tile_image" src="{{pokemon.sprites}}" alt="pokedex" width="120" height="120">
-            <p class="tile_p">{{ pokemon.id + pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) }}</p>
+            <p class="tile_p">{{ pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) }}</p>
         </li>
     </ul>
 </div>
