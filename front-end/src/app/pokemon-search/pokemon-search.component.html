@@ -8,6 +8,11 @@
                 {{ pokemon.name }}
             </a>
         </li>
+        <li class="search-list" *ngIf="noMatches && activeSearch">
+            <a>
+            there are no pokemons with that name
+            </a>
+        </li>
     </ul>
 </div>
 
