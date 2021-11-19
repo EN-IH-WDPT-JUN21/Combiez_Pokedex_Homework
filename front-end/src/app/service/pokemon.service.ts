@@ -1,8 +1,10 @@
 import { IPokemon } from './../interfaces/pokemon';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { InterfaceList } from '../interfaces/list';
+import { Pokemon } from '../models/pokemon.model';
 
 
 @Injectable({
@@ -29,6 +31,28 @@ export class PokemonService {
   
   getPokemon(url:string):Observable<IPokemon> {
     return this.http.get<IPokemon>(url);
+  }
+
+  searchPokemons(term: string): Observable<Pokemon> {
+    if (!term.trim()) {
+      return of();
+    }
+    return this.http.get<Pokemon>(`${this.baseUrl}/${term}`)
+    .pipe(
+      tap(x => x ? 
+        console.log(`found pokemons matching "${term}"`)
+        :
+        console.log(`no pokemons matching "${term}"`)),
+        catchError(this.handleError<Pokemon>('searchPokemons, []'))
+      );
+  }
+
+  private handleError<T>(operation = 'operation', result?:T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      console.log(`${operation} failed: ${error.message}`);
+      return of(result as T);
+    };
   }
 
 }

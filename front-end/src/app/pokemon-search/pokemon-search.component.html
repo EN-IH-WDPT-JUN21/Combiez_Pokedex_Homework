@@ -1,0 +1,16 @@
+<div id="search-component">
+    <label for="search-box">Pokemon search:</label>
+    <input #searchBox id="searchBox" (input)="search(searchBox.value)" />
+
+    <ul class="search-result">
+    <li *ngIf="pokemons$ | async">
+        <a routerLink="/detail/{{ foundPokemon.id }}">
+            {{ foundPokemon.name }}
+        </a>
+    </li>
+    </ul>
+</div>
+
+
+
+
