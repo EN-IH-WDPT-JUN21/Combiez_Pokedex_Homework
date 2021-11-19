@@ -41,23 +41,21 @@ export class PokemonService {
       return of([]);
     }
     
-    this.http.get<SearchResult>('https://pokeapi.co/api/v2/pokemon?limit=151')
-      
-    .pipe(
+    this.http.get<SearchResult>('https://pokeapi.co/api/v2/pokemon?limit=151').pipe(
         tap(x => x.results.length ?
-        console.log(`Found pokemons matching "${term}"`)
-        :
-        console.log(`No matching results`)),
-        catchError(this.handleError<SearchResult>('searchPokemon')))
-
-    .subscribe(pokemons => this.results = pokemons.results)
-    console.log(this.results);
+          console.log(`Found pokemons matching "${term}"`)
+          :
+          console.log(`No matching results`)),
+          catchError(this.handleError<SearchResult>('searchPokemon')
+        ))
+      .subscribe(pokemons => this.results = pokemons.results);
+    
     var foundPokemons = this.results.filter(pokemon => pokemon.name.includes(term));
 
     return foundPokemons ? of(foundPokemons) : of([]);
 
   }
-
+  
   private handleError<T>(operation = 'operation', result?:T) {
     return (error: any): Observable<T> => {
       console.error(error);
@@ -67,13 +65,3 @@ export class PokemonService {
   }
 
 }
-
-// .pipe(
-//   catchError(this.handleError<Pokemon[]>('searchPokemons, []')),
-//   map(pokemons => pokemons.filter(poke => poke.name.includes(term))),
-//   tap(x => x.length ? 
-//     console.log(`found pokemons mamtching "${term}"`)
-//     :
-//     console.log(`no pokemons matching "${term}"`)),
-//   catchError(this.handleError<Pokemon[]>('searchHeroes', []))
-// )
