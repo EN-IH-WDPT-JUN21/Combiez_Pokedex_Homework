@@ -12,6 +12,7 @@ import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { TrainerListComponent } from './trainer-list/trainer-list.component';
 import { TrainerCreateComponent } from './trainer-create/trainer-create.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { PokemonSearchComponent } from './pokemon-search/pokemon-search.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     TeamListComponent,
     PokemonListComponent,
     TrainerListComponent,
-    TrainerCreateComponent
+    TrainerCreateComponent,
+    PokemonSearchComponent
   ],
   imports: [
     BrowserModule,
