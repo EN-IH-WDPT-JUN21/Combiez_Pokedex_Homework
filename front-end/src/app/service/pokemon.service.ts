@@ -41,7 +41,16 @@ export class PokemonService {
       return of([]);
     }
     
-    this.http.get<SearchResult>('https://pokeapi.co/api/v2/pokemon?limit=151').subscribe(pokemons => this.results = pokemons.results);
+    this.http.get<SearchResult>('https://pokeapi.co/api/v2/pokemon?limit=151')
+      
+    .pipe(
+        tap(x => x.results.length ?
+        console.log(`Found pokemons matching "${term}"`)
+        :
+        console.log(`No matching results`)),
+        catchError(this.handleError<SearchResult>('searchPokemon')))
+
+    .subscribe(pokemons => this.results = pokemons.results)
     console.log(this.results);
     var foundPokemons = this.results.filter(pokemon => pokemon.name.includes(term));
 
