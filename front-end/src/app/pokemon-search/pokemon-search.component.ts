@@ -11,7 +11,7 @@ import { PokemonService } from '../service/pokemon.service';
 })
 export class PokemonSearchComponent implements OnInit {
 
-  pokemons$!:Observable<Pokemon>;
+  pokemons$! : Observable<Pokemon[]>;
   foundPokemon!: Pokemon;
   private searchTerms = new Subject<string>();
 
@@ -26,7 +26,7 @@ export class PokemonSearchComponent implements OnInit {
       switchMap((term: string) => this.pokemonService.
       searchPokemons(term))
     );
-    this.pokemons$.subscribe(pokemon => this.foundPokemon = pokemon);
+    // this.pokemons$.subscribe(pokemon => this.foundPokemon = pokemon);
   }
 
   search(term: string): void {

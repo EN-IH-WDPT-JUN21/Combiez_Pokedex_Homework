@@ -3,11 +3,11 @@
     <input #searchBox id="searchBox" (input)="search(searchBox.value)" />
 
     <ul class="search-result">
-    <li class="search-list" *ngIf="pokemons$ | async" >
-        <a *ngIf="foundPokemon" routerLink="/detail/{{ foundPokemon.id }}">
-            {{ foundPokemon.name }}
-        </a>
-    </li>
+        <li class="search-list" *ngFor="let pokemon of pokemons$ | async" >
+            <a routerLink="/detail/{{ pokemon.id }}">
+                {{ pokemon.name }}
+            </a>
+        </li>
     </ul>
 </div>
 
