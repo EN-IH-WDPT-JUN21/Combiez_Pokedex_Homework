@@ -3,9 +3,8 @@
 <app-trainer-create (created)="reloadData()"></app-trainer-create>
 
 <div class="container">
-<div class="row">
-    <div *ngFor="let trainer of trainers | async">
-        <div class="card">
+<div class="trainer-block">
+    <div class="card" *ngFor="let trainer of trainers | async">
             <header class="card-header">
                 <p class="card-header-title">
                     {{trainer.name}}
@@ -26,5 +25,4 @@
                 <!-- <a href="#" class="card-footer-item">Teams</a> -->
             </footer>
         </div>
-</div>
 </div>
