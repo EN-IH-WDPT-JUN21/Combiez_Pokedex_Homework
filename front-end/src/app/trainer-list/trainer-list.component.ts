@@ -22,4 +22,9 @@ export class TrainerListComponent implements OnInit {
   reloadData() {
     this.trainers = this.trainerService.getTrainersList();
   }
+
+  highlighted : Trainer | null = null;
+  highlight(trainer: Trainer | null) : void {
+    this.highlighted = trainer;
+  }
 }
