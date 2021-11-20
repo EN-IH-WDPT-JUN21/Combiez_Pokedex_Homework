@@ -43,7 +43,7 @@
 .poke-block {
   /* box configuration */
   width: 750px;
-  height: 800px;
+  height: 600px;
   margin: auto;
   margin-top: 50px;
   display: table;
@@ -55,6 +55,11 @@
   position: relative;
   margin: 0 0.78125% 50px;
   width: 23.4375%;
+}
+
+.tile_image:hover {
+  margin: 5px 10px 5px 10px;
+  background-color: #d3d3d35e;
 }
 
 .tile_image {

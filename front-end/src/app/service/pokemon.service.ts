@@ -24,12 +24,12 @@ export class PokemonService {
 
   }
 
-  getPokemonById(id: number):Observable<InterfaceList> {
-    return this.http.get<InterfaceList>(`${this.baseUrl}/${id}`);
-  }
-
   getPokemonByName(name: string):Observable<InterfaceList> {
     return this.http.get<InterfaceList>(`${this.baseUrl}/${name}`);
+  }
+
+  getPokemonById(id: number):Observable<IPokemon> {
+    return this.http.get<IPokemon>(`${this.baseUrl}/${id}`);
   }
   
   getPokemon(url:string):Observable<IPokemon> {

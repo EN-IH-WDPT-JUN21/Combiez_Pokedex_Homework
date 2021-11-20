@@ -56,7 +56,7 @@ export class PokemonListComponent implements OnInit {
   }
   
   nextPage():void{
-    if(this.page <= 151/20){
+    if(this.page <= 151/12){
       this.page = this.page +1;
     }
   }

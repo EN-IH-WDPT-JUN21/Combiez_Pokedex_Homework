@@ -1,7 +1,7 @@
 export class Pokemon {
 
     constructor(
-        private _id: number,
+        private _id: any,
         private _name: string,
         private _sprites: string,
         private _hp: number,
