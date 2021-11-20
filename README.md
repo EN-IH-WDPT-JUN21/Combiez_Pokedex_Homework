@@ -11,10 +11,15 @@ GET - http://localhost:8080/trainers/{id} returns a specific trainer by trainer 
 POST - http://localhost:8080/trainers creates a new trainer and returns the trainer. Creates an empty Team, Takes a request body of:-
 
 {
+
 "name": "MikeTrainer" (text),
+
 "age": 22 (number),
+
 "hobby": "Coding and Pokemon" (text),
-"photo": "SomePhotoString" (text)
+
+"photo": "PhotoURL" (text)
+
 }
 
 DELETE - http://localhost:8080/trainers/{id} deletes the trainer, and also deletes the team associated with that trainer if one exists, returns a confirmation String.
@@ -26,12 +31,20 @@ GET - http://localhost:8080/teams/{id} returns the team associated with the trai
 PUT - http://localhost:8080/teams amends the team and returns the amended team, if the team does not exist then returns an error. Takes same request body as POST method:-
 
 {
+
 "trainer": 3 (number, representing trainer id),
-"pokemon": [ (integer array, taking any number of entries, validation for number of pokemon is best done at front end)
+
+"pokemon": [ (integer array)
+
     189,
+    
     28,
+    
     377,
+    
     479,
+    
     5
+    
 ]
 }
