@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
 import { TeamDetailComponent } from './team-detail/team-detail.component';
@@ -8,7 +9,7 @@ import { TrainerListComponent } from './trainer-list/trainer-list.component';
 
 
 const routes: Routes = [
-  {path: '', component: PokemonListComponent},
+  {path: '', component: HomeComponent},
   {path: 'pokemon', component: PokemonListComponent},
   {path: 'pokemon/:id', component: PokemonDetailComponent},
   {path: 'team', component: TeamListComponent},

@@ -14,6 +14,7 @@ import { TrainerCreateComponent } from './trainer-create/trainer-create.componen
 import { NgxPaginationModule } from 'ngx-pagination';
 import { PokemonSearchComponent } from './pokemon-search/pokemon-search.component';
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.componen
     TrainerListComponent,
     TrainerCreateComponent,
     PokemonSearchComponent,
-    PokemonDetailComponent
+    PokemonDetailComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
