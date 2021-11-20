@@ -44,15 +44,6 @@ public class TeamService {
         }
     }
 
-    public Team newTeam(TeamDTO teamDTO) {
-        Optional<Trainer> trainer = trainerRepository.findById(teamDTO.getTrainer());
-        if(trainer.isPresent()) {
-            Team team = new Team(teamDTO.getTrainer(), teamDTO.getPokemon());
-            return teamRepository.save(team);
-        }else{
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No trainer matching that Id");
-        }
-    }
 
     public Team changeTeam(TeamDTO teamDTO) {
         Optional<Team> team = teamRepository.findByTrainer(teamDTO.getTrainer());
