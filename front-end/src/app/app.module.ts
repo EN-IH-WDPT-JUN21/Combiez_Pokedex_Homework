@@ -12,11 +12,8 @@ import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { TrainerListComponent } from './trainer-list/trainer-list.component';
 import { TrainerCreateComponent } from './trainer-create/trainer-create.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-<<<<<<< HEAD
 import { PokemonSearchComponent } from './pokemon-search/pokemon-search.component';
-=======
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
->>>>>>> 89fed98 (Pokedex ready to use)
 
 @NgModule({
   declarations: [
@@ -27,11 +24,8 @@ import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.componen
     PokemonListComponent,
     TrainerListComponent,
     TrainerCreateComponent,
-<<<<<<< HEAD
-    PokemonSearchComponent
-=======
+    PokemonSearchComponent,
     PokemonDetailComponent
->>>>>>> 89fed98 (Pokedex ready to use)
   ],
   imports: [
     BrowserModule,
