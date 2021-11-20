@@ -3,7 +3,7 @@
 
 <div class="card">
     <span>
-        <img class="image" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/{{ selectedPokemon?.id }}.png" alt="" width="350" height="350">
+        <img class="image" src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/{{ selectedPokemon?.id }}.png" alt="" width="340" height="340">
     </span>
 
     <div class="info">
@@ -30,6 +30,7 @@
 
         <div class="stats" *ngIf="selectedPokemon!=undefined">
             <li>
+                <ul class="entry">{{selectedPokemon?.entry}}</ul>
                 <ul>hp: {{selectedPokemon?.hp}}</ul>
                 <ul>attack: {{selectedPokemon?.attack}}</ul>
                 <ul>defense: {{selectedPokemon?.defense}}</ul>

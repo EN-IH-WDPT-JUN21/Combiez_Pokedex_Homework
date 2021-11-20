@@ -28,7 +28,8 @@ export class PokemonDetailComponent implements OnInit {
     this.pokemonService.getPokemonById(this.pokemonId).subscribe(result => {
       let pokemon : Pokemon = new Pokemon(
         result.id.toLocaleString('en-US', { minimumIntegerDigits: 3, useGrouping: false}),
-        result.name,
+        result.name.split("-")[0],
+        '',
         result.sprites.front_default,
         result.stats[0].base_stat,
         result.stats[1].base_stat,
@@ -43,6 +44,10 @@ export class PokemonDetailComponent implements OnInit {
       if (result.types.length > 1) {
         pokemon.types[1] = result.types[1].type.name.toUpperCase();
       }
+
+      this.pokemonService.getPokemonEntry(this.pokemonId).subscribe(result => {
+        pokemon.entry = result.flavor_text_entries[1].flavor_text
+      })
 
       this.selectedPokemon = pokemon;
     })

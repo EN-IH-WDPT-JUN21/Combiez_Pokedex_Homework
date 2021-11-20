@@ -35,7 +35,8 @@ export class PokemonListComponent implements OnInit {
     this.pokemonService.getPokemon(url).subscribe(dataResult => {
         let pokemon: Pokemon = new Pokemon(
         dataResult.id,
-        dataResult.name,
+        dataResult.name.split("-")[0],
+        '',
         dataResult.sprites.front_default,
         dataResult.stats[0].base_stat,
         dataResult.stats[1].base_stat,

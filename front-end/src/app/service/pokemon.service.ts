@@ -6,6 +6,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { InterfaceList } from '../interfaces/list';
 import { Pokemon } from '../models/pokemon.model';
 import { SearchResult } from '../interfaces/search-results';
+import { PokedexEntry } from '../interfaces/pokedexEntry';
 
 
 @Injectable({
@@ -64,4 +65,7 @@ export class PokemonService {
     };
   }
 
+  getPokemonEntry(id: number):Observable<PokedexEntry> {
+    return this.http.get<PokedexEntry>(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
+  }
 }
