@@ -1,15 +1,24 @@
 <p class="title is-2">Team List</p>
+<button (click)="getPokemonImages()">test</button>
+<!-- <div>
+    <p>{{ pokemonTest.name }}</p>
+    <img [src]="pokemonTest.url" alt="pokemon image" width="120" height="120" />
+</div> -->
+<div *ngFor="let team of teams">
+    <p>{{ team.owner }}</p>
+    <div *ngFor="let pokemon of team.pokemons">
+        <p>{{ pokemon.name }}</p>
+    </div>
+    <br>
+</div>
 
 <div *ngFor="let team of teams">
     <div class="box">
         <a [title]="team.owner + '\'s' +' team'" [routerLink]="['/team', team.id]">
         <div class="columns">
-        <div class="column is-2">
-            <!-- <img src="{{team.logo}}" alt="{{team.owner}}" class="image is-128x128"> -->
-        </div>
         <div class="column">
             <p class="title is-4">{{team.owner}}</p>
-            <p *ngFor="let pokemon of team.pokemons" class="subtitle is-6">{{ pokemon }}</p>
+            <p *ngFor="let pokemon of team.pokemons" class="subtitle is-6">{{ pokemon.name }}</p>
         </div>
         </div>
         </a>
