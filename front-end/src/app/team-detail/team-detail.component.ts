@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Team, teams } from '../models/team';
+import { Team } from '../models/team.model';
 import { TeamService } from '../service/team.service';
 
 @Component({
@@ -26,5 +26,7 @@ export class TeamDetailComponent implements OnInit {
     this.teamService.getTeam(id)
       .subscribe(team => this.team = team);
   }
+
+
 
 }

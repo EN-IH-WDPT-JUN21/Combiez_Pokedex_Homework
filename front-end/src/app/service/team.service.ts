@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Team } from '../models/team';
+import { Team } from '../models/team.model';
+import { BackTeam } from '../models/back-team.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -14,8 +15,8 @@ export class TeamService {
     private http: HttpClient
   ) { }
 
-  getTeams(): Observable<Team[]> {
-    return this.http.get<Team[]>(this.baseUrl);
+  getTeams(): Observable<BackTeam[]> {
+    return this.http.get<BackTeam[]>(this.baseUrl);
   }
 
   getTeam(id: number): Observable<Team> {
