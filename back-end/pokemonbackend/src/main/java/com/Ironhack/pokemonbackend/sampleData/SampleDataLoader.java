@@ -35,7 +35,7 @@ public class SampleDataLoader implements CommandLineRunner {
                 .mapToObj(i -> new Trainer(
                         faker.name().firstName(),
                         faker.number().numberBetween(18,99),
-                        faker.book().title(),
+                        faker.job().field(),
                         "https://www.seekpng.com/png/detail/242-2421423_pokemon-trainer-sprite-png-pixel-pokemon-trainer-sprites.png"
                 )).collect(Collectors.toList());
 
