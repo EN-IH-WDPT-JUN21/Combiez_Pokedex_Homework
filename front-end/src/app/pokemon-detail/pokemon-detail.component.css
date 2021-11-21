@@ -2,7 +2,7 @@
   border: none;
   background-color: rgb(62, 62, 62);
   padding: 10px 10px 10px 10px;
-  margin: 10px 0px 0px 12px;
+  margin-left: 12px;
   border-radius: 4px;
   color: #fff;
   font-size: 11px;
@@ -14,7 +14,7 @@
   border: none;
   background-color: rgba(169, 169, 169, 0.639);
   padding: 15px 15px 15px 15px;
-  margin: 13px 0px 0px 6px;
+  margin: 8px 0px 0px 6px;
   border-radius: 4px;
   color: #fff;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='5.41' height='12' viewBox='0 0 7.41 12'%3E%3Cpath d='M10,6,8.59,7.41,13.17,12,8.59,16.59,10,18l6-6Z' transform='translate(-8.59 -6)' fill='%23fff'/%3E%3C/svg%3E");
@@ -26,7 +26,7 @@
   border: none;
   background-color: rgba(169, 169, 169, 0.639);
   padding: 15px 20px 15px 10px;
-  margin-top: 13px;
+  margin-top: 8px;
   border-radius: 5px;
   color: #fff;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='5.41' height='12' viewBox='0 0 7.41 12'%3E%3Cpath d='M16,16.6 11.4,12 16,7.4 14.6,6 8.6,12 14.6,18Z'  transform='translate(-8.59 -6)' fill='%23fff'/%3E%3C/svg%3E");
@@ -37,8 +37,8 @@
 .card {
   /* box configuration */
   width: 1040px;
-  height: 450px;
-  margin-top: 20px;
+  height: 410px;
+  margin-top: 15px;
   margin-left: 120px;
   padding: 30px;
   display: flex;
@@ -48,7 +48,7 @@
 }
 
 img {
-  margin: 10px 10px 10px 50px;
+  margin: 5px 10px 10px 50px;
   padding: 20px;
   border: none;
   border-radius: 15px;
@@ -61,15 +61,13 @@ img {
   height: 400px;
   margin: auto;
   margin-left: 40px;
-  margin-top: 16px;
   display: table-column;
   align-content: left;
 }
 
 h2 {
   font-size: 20px;
-  margin-left: -20px;
-  margin-bottom: 12px;
+  margin: 12px 0px 12px -20px;
 }
 
 .navigation {

@@ -4,27 +4,28 @@
 
 <div class="container">
 <div class="trainer-block">
-    <div *ngFor="let trainer of trainers | async" (mouseover)="highlight(trainer)" (mouseout)="highlight(null)"
-        class="card" [class.has-background-grey-lighter]="trainer===highlighted"
-    >
-            <header class="card-header">
+    <div *ngFor="let trainer of trainers | async, let i = index" (mouseover)="highlight(trainer)" (mouseout)="highlight(null)"
+        class="card" [class.has-background-grey-lighter]="trainer===highlighted">
+        
+        <a [routerLink]="['/team', i+1]">
+            <header>
                 <p class="card-header-title">
                     {{trainer.name}}
                 </p>
             </header>
             <div class="card-image">
-                <img src="{{trainer.photo}}" alt="Photo of {{trainer.name}}">
+                <img src="{{trainer.photo}}" alt="Photo of {{trainer.name}}" width="300" height="300">
             </div>
-            <div class="card-content">
-            <div class="content">
-                <ul>
-                    <li><b>Hobby</b>: {{trainer.hobby}}</li>
-                    <li><b>Age</b>: {{trainer.age}}</li>
-                </ul>
-            </div>
-            </div>
-            <footer class="card-footer">
-                <!-- <a href="#" class="card-footer-item">Teams</a> -->
-            </footer>
+        </a>
+
+        <div class="card-content">
+        <div class="content">
+            <ul>
+                <li><b>Hobby</b>: {{trainer.hobby}}</li>
+                <li><b>Age</b>: {{trainer.age}}</li>
+            </ul>
         </div>
+        </div>
+        
+    </div>
 </div>
