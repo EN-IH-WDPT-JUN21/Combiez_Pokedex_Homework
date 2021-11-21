@@ -25,8 +25,8 @@ export class PokemonService {
 
   }
 
-  getPokemonByName(name: string):Observable<InterfaceList> {
-    return this.http.get<InterfaceList>(`${this.baseUrl}/${name}`);
+  getPokemonByName(name: string):Observable<IPokemon> {
+    return this.http.get<IPokemon>(`${this.baseUrl}/${name}`);
   }
 
   getPokemonById(id: number):Observable<IPokemon> {
@@ -34,7 +34,8 @@ export class PokemonService {
   }
   
   getPokemon(url:string):Observable<IPokemon> {
-    return this.http.get<IPokemon>(url);
+    return this.http.get<IPokemon>(url)
+    .pipe(tap(x => x, catchError(this.handleError<IPokemon>('getPokemon'))));
   }
 
   searchPokemons(term: string): Observable<Pokemon[]> {

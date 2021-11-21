@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InterfaceList } from '../interfaces/list';
 
 import { Result } from '../models/result.model';
 import { Team } from '../models/team.model';
@@ -14,6 +15,7 @@ export class TeamListComponent implements OnInit {
 
   teams: Team[] = [];
   teamPokemon : Result[] = [];
+  allPokemons : Result[] = [];
 
   constructor(
     private teamService: TeamService,
@@ -21,6 +23,10 @@ export class TeamListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.loadTeams();
+  }
+
+  loadTeams(): void {
     this.teamService.getTeams().subscribe(
       teams => teams.forEach(
         team => this.teams.push(
@@ -31,15 +37,23 @@ export class TeamListComponent implements OnInit {
         )
       )
     );
+    this.getAllPokemon();
     this.getPokemonImages();
-    console.log(this.teams);
+  }
+
+  getAllPokemon(): void {
+    this.pokemonService.getAllPokemon().subscribe(
+      result => result.results.forEach(
+        pokemon => this.allPokemons.push(new Result(pokemon.name, pokemon.url))));
   }
 
   getPokemonImages(): void {
     this.teams.forEach(
-      team => team.pokemons.forEach(
-        pokemon => this.pokemonService.getPokemonByName(pokemon.name)
-        .subscribe(poke => pokemon.url = poke.results[0].url)
+      team => team.pokemons.forEach(  
+        pokemon => { this.pokemonService.getPokemon(this.allPokemons.find(poke => poke.name.includes(pokemon.name.substring(0, 8)))!.url)
+        .subscribe(foundPoke => pokemon.url = foundPoke.sprites.front_default);
+        console.log(pokemon.name);
+        }
       ))
   }
 }
