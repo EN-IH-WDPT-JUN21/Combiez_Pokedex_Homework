@@ -1,5 +1,6 @@
 package com.Ironhack.pokemonbackend.controller.impl;
 
+import com.Ironhack.pokemonbackend.controller.dto.PokemonDTO;
 import com.Ironhack.pokemonbackend.controller.dto.TeamDTO;
 import com.Ironhack.pokemonbackend.controller.dto.TeamWithNameDTO;
 import com.Ironhack.pokemonbackend.dao.Team;
@@ -30,6 +31,13 @@ public class TeamController {
     @PutMapping
     public Team amendTeam(@RequestBody TeamDTO teamDTO){
         return teamService.changeTeam(teamDTO);
+    }
+
+    @PutMapping("/{teamId}")
+    public TeamWithNameDTO deletePokemonFromTeam(@PathVariable Long teamId, @RequestBody PokemonDTO pokemonName) {
+        System.out.println("\nteam is: " + teamId);
+        System.out.println("\npokemon is" + pokemonName.getPokemonName());
+        return teamService.deletePokemonFromTeam(teamId, pokemonName.getPokemonName());
     }
 
 

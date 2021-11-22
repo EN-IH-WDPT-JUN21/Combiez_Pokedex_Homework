@@ -23,11 +23,11 @@ export class TeamListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadTeams();
+    this.getAllPokemon();
   }
 
   loadTeams(): void {
-    this.getAllPokemon();
+    
     this.teamService.getTeams().subscribe(
       teams => { teams.forEach(
         team => { this.teams.push(
@@ -43,8 +43,9 @@ export class TeamListComponent implements OnInit {
 
   getAllPokemon(): void {
     this.pokemonService.getAllPokemon().subscribe(
-      result => result.results.forEach(
-        pokemon => this.allPokemons.push(new Result(pokemon.name, pokemon.url))));
+      result => { result.results.forEach(
+        pokemon => this.allPokemons.push(new Result(pokemon.name, pokemon.url)));
+      this.loadTeams();});
   }
 
   getPokemonImages(): void {
@@ -54,5 +55,12 @@ export class TeamListComponent implements OnInit {
         .subscribe(foundPoke => pokemon.url = foundPoke.sprites.front_default);
         }
       ))
+  }
+
+  deletePokemon(teamToUpdate: Team, pokemonToDelete: Result): void {
+    let selectedTeam = this.teams.find(team => team.id === teamToUpdate.id)!;
+    let pokemonIndex = selectedTeam.pokemons.indexOf(pokemonToDelete)!;
+    selectedTeam.pokemons.splice(pokemonIndex, 1);
+    this.teamService.deletePokemonFromTeam(teamToUpdate.id, pokemonToDelete.name);
   }
 }
