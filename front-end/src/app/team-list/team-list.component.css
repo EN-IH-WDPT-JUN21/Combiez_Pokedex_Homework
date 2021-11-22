@@ -1,4 +1,25 @@
 .search {
     float:left;
+}
+.teams-container {
+    justify-content: center;
+}
 
+.team-item {
+    padding: 5px;
+    margin: 15px auto;
+    width: 100%;
+}
+
+.pokemon-name {
+    margin: 25px 0px;
+}
+
+.pokemon-item {
+    text-align: center;
+}
+
+.poke-img:hover {
+
+    background-color: #d3d3d35e;
 }

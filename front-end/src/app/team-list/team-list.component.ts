@@ -27,18 +27,18 @@ export class TeamListComponent implements OnInit {
   }
 
   loadTeams(): void {
+    this.getAllPokemon();
     this.teamService.getTeams().subscribe(
-      teams => teams.forEach(
-        team => this.teams.push(
+      teams => { teams.forEach(
+        team => { this.teams.push(
           new Team(team.id, team.owner, team.pokemons.map(poke => {
             let rObj = new Result('', '');
             rObj.name = poke;
             return rObj }))
-        )
-      )
-    );
-    this.getAllPokemon();
-    this.getPokemonImages();
+          );
+        this.getPokemonImages();
+      })
+    });
   }
 
   getAllPokemon(): void {
@@ -52,7 +52,6 @@ export class TeamListComponent implements OnInit {
       team => team.pokemons.forEach(  
         pokemon => { this.pokemonService.getPokemon(this.allPokemons.find(poke => poke.name.includes(pokemon.name.substring(0, 8)))!.url)
         .subscribe(foundPoke => pokemon.url = foundPoke.sprites.front_default);
-        console.log(pokemon.name);
         }
       ))
   }

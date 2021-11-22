@@ -1,25 +1,27 @@
 <p class="title is-2">Team List</p>
-<button (click)="getPokemonImages()">test</button>
-
-
-<div class="media" *ngFor="let team of teams">
-    <div class="box">
+<div class="tile is-ancestor teams-container">
+<div class="tile is-vertical is-10 center" >
+    <div class="tile is-parent is-vertical">
         
-        <div class="columns">
-            <div class="column media-left">
+        <div class="tile team-item" *ngFor="let team of teams">
+            <div class="tile is-child">
                 <a [title]="team.owner + '\'s' +' team'" [routerLink]="['/team', team.id]">
-                    <p class="title is-4">{{team.owner}}</p>
+                    <p class="title is-4 pokemon-name">{{team.owner}}</p>
                 </a>
-            </div>
-            <div class="media-content" *ngFor="let pokemon of team.pokemons">
-                    <p class="subtitle is-6">{{ pokemon.name }}</p>
-                    <img [src]="pokemon.url" height="120" width="120"/>
+                <div class="columns">
+                    <div class="column pokemon-item" *ngFor="let pokemon of team.pokemons">
+                        <p class="subtitle is-6">{{ pokemon.name }}</p>
+                        <img class="poke-img" [src]="pokemon.url" height="120" width="120"/>
+                    </div>
+                </div>
             </div>
 
-            
+            <div class="search" *ngIf="team.pokemons.length < 6">
+                <app-pokemon-search></app-pokemon-search>
+            </div>  
         </div>
-        <div class="search">
-            <app-pokemon-search></app-pokemon-search>
-        </div>
+        
         
     </div>
+</div>
+</div>
