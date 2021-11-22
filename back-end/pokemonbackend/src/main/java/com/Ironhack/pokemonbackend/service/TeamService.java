@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -69,4 +70,28 @@ public class TeamService {
         }
         return teamListWithNames;
     }
+
+    public TeamWithNameDTO deletePokemonFromTeam(Long teamId, String pokemonName) {
+        System.out.println("\ndelete service has been called\n");
+        Optional<Team> foundTeam = teamRepository.findById(teamId);
+        boolean foundPoke = false;
+        if (foundTeam.isPresent()){
+            int i = 0;
+            String[] newPokemonArray = new String[foundTeam.get().getPokemon().length - 1];
+            int index = Arrays.asList(foundTeam.get().getPokemon()).indexOf(pokemonName);
+            for (String pokemon : foundTeam.get().getPokemon()) {
+                if (pokemon.equals(pokemonName) && !foundPoke){
+                    foundPoke = true;
+                    continue;
+                } else {
+                    newPokemonArray[i] = pokemon;
+                    i++;
+                }
+            }
+            foundTeam.get().setPokemon(newPokemonArray);
+            teamRepository.save(foundTeam.get());
+        }
+            return null;
+        }
+
 }

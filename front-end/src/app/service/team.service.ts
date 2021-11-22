@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Team } from '../models/team.model';
 import { BackTeam } from '../models/back-team.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,12 @@ import { Observable } from 'rxjs';
 export class TeamService {
 
   baseUrl = 'http://localhost:8080/teams/';
+
+  readonly httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+    })
+  };
   
   constructor(
     private http: HttpClient
@@ -22,6 +29,13 @@ export class TeamService {
   getTeam(id: number): Observable<Team> {
     console.log(`getTeam a ${this.baseUrl}${id}`)
     return this.http.get<Team>(this.baseUrl + id);
+  }
+
+  deletePokemonFromTeam(teamId: number, pokemon: string): void {
+    console.log(`deletePokemonFromTeam a ${this.baseUrl}${teamId}`);
+    console.log(`deletePokemonFromTeam a ${pokemon}`);
+    let pokemonDTO = {pokemonName: pokemon};
+    this.http.put('http://localhost:8080/teams/1', pokemonDTO, this.httpOptions);
   }
 }
 
