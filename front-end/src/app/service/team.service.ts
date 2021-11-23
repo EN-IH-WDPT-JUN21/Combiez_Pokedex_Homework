@@ -31,11 +31,11 @@ export class TeamService {
     return this.http.get<Team>(this.baseUrl + id);
   }
 
-  deletePokemonFromTeam(teamId: number, pokemon: string): void {
+  deletePokemonFromTeam(teamId: number, pokemon: string): Observable<any> {
     console.log(`deletePokemonFromTeam a ${this.baseUrl}${teamId}`);
     console.log(`deletePokemonFromTeam a ${pokemon}`);
     let pokemonDTO = {pokemonName: pokemon};
-    this.http.put('http://localhost:8080/teams/1', pokemonDTO, this.httpOptions);
+    return this.http.put<any>(`http://localhost:8080/teams/${teamId}`, pokemonDTO, this.httpOptions);
   }
 }
 
