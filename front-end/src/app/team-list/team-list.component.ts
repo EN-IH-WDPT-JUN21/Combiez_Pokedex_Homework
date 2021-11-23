@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { InterfaceList } from '../interfaces/list';
 
 import { Result } from '../models/result.model';
 import { Team } from '../models/team.model';
@@ -61,6 +60,6 @@ export class TeamListComponent implements OnInit {
     let selectedTeam = this.teams.find(team => team.id === teamToUpdate.id)!;
     let pokemonIndex = selectedTeam.pokemons.indexOf(pokemonToDelete)!;
     selectedTeam.pokemons.splice(pokemonIndex, 1);
-    this.teamService.deletePokemonFromTeam(teamToUpdate.id, pokemonToDelete.name);
+    this.teamService.deletePokemonFromTeam(teamToUpdate.id, pokemonToDelete.name).subscribe();
   }
 }
